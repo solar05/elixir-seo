@@ -1,5 +1,4 @@
 # ElixirSeo
-![](https://github.com/solar05/elixir-seo/workflows/Elixir/badge.svg)
 
 To start your Phoenix server:
 
