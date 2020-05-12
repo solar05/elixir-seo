@@ -1,4 +1,6 @@
 # ElixirSeo
+![Phx CI](https://github.com/solar05/elixir-seo/workflows/Phx%20CI/badge.svg)
+
 
 To start your Phoenix server:
 

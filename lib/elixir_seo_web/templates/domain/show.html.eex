@@ -1,0 +1,33 @@
+<h1>Show Domain</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @domain.name %>
+  </li>
+
+  <li>
+    <strong>State:</strong>
+    <%= @domain.state %>
+  </li>
+
+  <li>
+    <strong>Length:</strong>
+    <%= @domain.length %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @domain.content %>
+  </li>
+
+  <li>
+    <strong>Header:</strong>
+    <%= @domain.header %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.domain_path(@conn, :edit, @domain) %></span>
+<span><%= link "Back", to: Routes.domain_path(@conn, :index) %></span>
