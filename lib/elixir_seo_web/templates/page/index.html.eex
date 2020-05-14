@@ -3,9 +3,5 @@
   <p class="lead" align="center">Web-application to analyze sites for SEO suitability. Please input site URL that you want to analyze.</p>
   <hr class="my-4">
 
-  <%= form_for @conn, Routes.domain_path(@conn, :create), fn f -> %>
-     <%= text_input f, :name , class: "form-control mb-3", placeholder: "Site URL", required: true, type: "text"  %>
-
-  <%= submit "Submit", class: "btn btn-primary btn-lg btn-block" %>
-<% end %>
+  <%= link "Start using!", to: Routes.domain_path(@conn, :create), class: "btn btn-primary btn-lg btn-block" %>
 </div>

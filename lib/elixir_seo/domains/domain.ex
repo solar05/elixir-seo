@@ -16,6 +16,7 @@ defmodule ElixirSeo.Domains.Domain do
   def changeset(domain, attrs) do
     domain
     |> cast(attrs, [:name, :state, :length, :content, :header])
-    |> validate_required([:name, :state, :length, :content, :header])
+    |> validate_required([:name])
   end
+
 end

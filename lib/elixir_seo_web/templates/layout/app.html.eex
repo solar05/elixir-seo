@@ -17,6 +17,9 @@
                 <li class="nav-item active">
                   <%= link("Analyzer", to: Routes.page_path(@conn, :index), class: "navbar-brand mb-0 h1") %>
                 </li>
+                <li class="nav-item">
+                  <%= link("All Domains", to: Routes.domain_path(@conn, :index), class: "navbar-brand mb-0 h1") %>
+                </li>
             </ul>
         </div>
       </nav>
@@ -25,7 +28,7 @@
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
     <%= @inner_content %>
   </body>
-  <footer class="page-footer pt-4">
+  <footer class="page-footer pt-4 ">
     <div class="container-fluid text-center text-md-left">
       <div class="footer-copyright text-center font-weight-bold">© 2020 Solar05:
         <a href="https://github.com/solar05/elixir-seo"> Source code</a>

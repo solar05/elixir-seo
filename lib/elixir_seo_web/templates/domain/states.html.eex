@@ -1,0 +1,12 @@
+<%= if @state == "created" do %>
+    <span class="badge badge-info">Created</span>
+<% end %>
+<%= if @state == "pending" do %>
+    <span class="badge badge-primary">Pending</span>
+<% end %>
+<%= if @state == "completed" do %>
+    <span class="badge badge-success">Completed</span>
+<% end %>
+<%= if @state == "canceled" do %>
+    <span class="badge badge-danger">Canceled</span>
+<% end %>

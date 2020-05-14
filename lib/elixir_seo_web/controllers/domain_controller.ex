@@ -1,5 +1,6 @@
 defmodule ElixirSeoWeb.DomainController do
   use ElixirSeoWeb, :controller
+  import ElixirSeoWeb.Helpers.WebHelper
 
   alias ElixirSeo.Domains
   alias ElixirSeo.Domains.Domain
@@ -14,18 +15,19 @@ defmodule ElixirSeoWeb.DomainController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, params) do
-    IO.inspect(params)
-    #case Domains.create_domain(domain_params) do
-    #  {:ok, domain} ->
-    #    conn
-    #    |> put_flash(:info, "Domain created successfully.")
-    #    |> redirect(to: Routes.domain_path(conn, :show, domain))
-    #
-    #  {:error, %Ecto.Changeset{} = changeset} ->
-    #    render(conn, "new.html", changeset: changeset)
-    #end
-    redirect(conn, to: Routes.page_path(conn, :index))
+  def create(conn, %{"domain" => domain_params}) do
+    {:ok, url} = validate_url(domain_params)
+    case Domains.create_domain(%{name: url, state: "created"}) do
+      {:ok, domain} ->
+        conn
+        |> put_flash(:info, "Domain created successfully.")
+        |> redirect(to: Routes.domain_path(conn, :show, domain))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        IO.inspect(changeset)
+        conn
+        |> put_flash(:info, "Domain created successfully.")
+        |> render("new.html", changeset: changeset)
+    end
   end
 
   def show(conn, %{"id" => id}) do
@@ -41,14 +43,15 @@ defmodule ElixirSeoWeb.DomainController do
 
   def update(conn, %{"id" => id, "domain" => domain_params}) do
     domain = Domains.get_domain!(id)
-
-    case Domains.update_domain(domain, domain_params) do
+    {:ok, url} = validate_url(domain_params)
+    case Domains.update_domain(domain, %{"name" => url}) do
       {:ok, domain} ->
         conn
         |> put_flash(:info, "Domain updated successfully.")
         |> redirect(to: Routes.domain_path(conn, :show, domain))
 
       {:error, %Ecto.Changeset{} = changeset} ->
+        IO.inspect(changeset)
         render(conn, "edit.html", domain: domain, changeset: changeset)
     end
   end
@@ -61,4 +64,5 @@ defmodule ElixirSeoWeb.DomainController do
     |> put_flash(:info, "Domain deleted successfully.")
     |> redirect(to: Routes.domain_path(conn, :index))
   end
+
 end

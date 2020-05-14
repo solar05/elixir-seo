@@ -17,7 +17,7 @@ defmodule ElixirSeoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/domains", DomainController
+    resources "/domains", DomainController, except: [:delete, :update, :edit]
   end
 
   # Other scopes may use custom stacks.
