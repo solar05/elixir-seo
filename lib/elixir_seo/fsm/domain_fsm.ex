@@ -1,5 +1,5 @@
 defmodule ElixirSeo.Domains.DomainFsm do
-  alias ElixirSeo.Domains.Domain
+  alias ElixirSeo.Domains
   use Machinery,
 
     states: ["created", "pending", "complete", "canceled"],
@@ -11,6 +11,7 @@ defmodule ElixirSeo.Domains.DomainFsm do
     }
 
     def persist(struct, next_state) do
-      {:ok, domain} = Domain.update_domain(struct, %{state: next_state})
+      {:ok, domain} = Domains.update_domain(struct, %{state: next_state})
     end
+
 end

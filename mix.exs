@@ -46,7 +46,9 @@ defmodule ElixirSeo.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:machinery, "~> 1.0.0"},
-      {:httpoison, "~> 1.6"}
+      {:httpoison, "~> 1.6"},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:crawler, "~> 1.1"}
     ]
   end
 
