@@ -20,12 +20,11 @@ defmodule ElixirSeoWeb.DomainController do
     case Domains.create_domain(%{name: url, state: "created"}) do
       {:ok, domain} ->
         conn
-        |> put_flash(:info, "Domain created successfully.")
+        |> put_flash(:info, "Domain added successfully.")
         |> redirect(to: Routes.domain_path(conn, :show, domain))
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset)
         conn
-        |> put_flash(:info, "Domain created successfully.")
+        |> put_flash(:error, "Invalid domain url.")
         |> render("new.html", changeset: changeset)
     end
   end
