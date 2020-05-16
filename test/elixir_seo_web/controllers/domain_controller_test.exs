@@ -3,8 +3,20 @@ defmodule ElixirSeoWeb.DomainControllerTest do
 
   alias ElixirSeo.Domains
 
-  @create_attrs %{content: "somecontent", header: "some header", length: 42, name: "some name", state: "created"}
-  @update_attrs %{content: "someupdatedcontent", header: "some updated header", length: 43, name: "some updated name", state: "created"}
+  @create_attrs %{
+    content: "somecontent",
+    header: "some header",
+    length: 42,
+    name: "some name",
+    state: "created"
+  }
+  @update_attrs %{
+    content: "someupdatedcontent",
+    header: "some updated header",
+    length: 43,
+    name: "some updated name",
+    state: "created"
+  }
   @invalid_attrs %{content: nil, header: nil, length: nil, name: "", state: nil}
 
   def fixture(:domain) do

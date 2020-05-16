@@ -6,8 +6,20 @@ defmodule ElixirSeo.DomainsTest do
   describe "domains" do
     alias ElixirSeo.Domains.Domain
 
-    @valid_attrs %{content: "some content", header: "some header", length: 42, name: "some name", state: "some state"}
-    @update_attrs %{content: "some updated content", header: "some updated header", length: 43, name: "some updated name", state: "some updated state"}
+    @valid_attrs %{
+      content: "some content",
+      header: "some header",
+      length: 42,
+      name: "some name",
+      state: "some state"
+    }
+    @update_attrs %{
+      content: "some updated content",
+      header: "some updated header",
+      length: 43,
+      name: "some updated name",
+      state: "some updated state"
+    }
     @invalid_attrs %{content: nil, header: nil, length: nil, name: nil, state: nil}
 
     def domain_fixture(attrs \\ %{}) do

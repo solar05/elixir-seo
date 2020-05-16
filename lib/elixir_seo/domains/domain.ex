@@ -18,5 +18,4 @@ defmodule ElixirSeo.Domains.Domain do
     |> cast(attrs, [:name, :state, :length, :content, :header])
     |> validate_required([:name])
   end
-
 end

@@ -17,11 +17,13 @@ defmodule ElixirSeoWeb.DomainController do
 
   def create(conn, %{"domain" => domain_params}) do
     {:ok, url} = validate_url(domain_params)
+
     case Domains.create_domain(%{name: url, state: "created"}) do
       {:ok, domain} ->
         conn
         |> put_flash(:info, "Domain added successfully.")
         |> redirect(to: Routes.domain_path(conn, :show, domain))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Invalid domain url.")
@@ -43,6 +45,7 @@ defmodule ElixirSeoWeb.DomainController do
   def update(conn, %{"id" => id, "domain" => domain_params}) do
     domain = Domains.get_domain!(id)
     {:ok, url} = validate_url(domain_params)
+
     case Domains.update_domain(domain, %{"name" => url}) do
       {:ok, domain} ->
         conn
@@ -50,7 +53,6 @@ defmodule ElixirSeoWeb.DomainController do
         |> redirect(to: Routes.domain_path(conn, :show, domain))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset)
         render(conn, "edit.html", domain: domain, changeset: changeset)
     end
   end
@@ -63,5 +65,4 @@ defmodule ElixirSeoWeb.DomainController do
     |> put_flash(:info, "Domain deleted successfully.")
     |> redirect(to: Routes.domain_path(conn, :index))
   end
-
 end

@@ -11,6 +11,5 @@ defmodule ElixirSeo.Repo.Migrations.CreateDomains do
 
       timestamps()
     end
-
   end
 end

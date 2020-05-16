@@ -4,5 +4,4 @@ defmodule ElixirSeoWeb.DomainView do
   def present_state(state) do
     render("states.html", state: state)
   end
-
 end
